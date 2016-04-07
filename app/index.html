@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!--bower:css-->
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css" />
+    <!--endbower-->
+    <!--inject:css-->
+    <link rel="stylesheet" href="styles/application_style.css">
+    <!--endinject-->
+</head>
+<body>
+<nav-directive></nav-directive>
+<div ng-include="'partials/templates/jumbotron.html'"></div>
+<div class="container">
+    <ui-view></ui-view>
+</div>
+<!--bower:js-->
+<script src="lib/jquery/dist/jquery.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+<!--endbower-->
+<!--inject:js-->
+<script src="app.js"></script>
+<script src="js/controllers/homeCtrl.js"></script>
+<script src="js/controllers/navCtrl.js"></script>
+<script src="js/directives/nav_directive.js"></script>
+<!--endinject-->
+</body>
+</html>
