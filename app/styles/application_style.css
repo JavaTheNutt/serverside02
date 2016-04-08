@@ -1,3 +1,19 @@
+div#jumbo {
+  margin-top: 0;
+  background-color: #383836;
+  color: #9C9A95;
+  padding-top: 30px;
+  padding-bottom: 30px; }
 
+.panel-default > .panel-heading {
+  background-color: #383836;
+  background-image: none;
+  color: #9C9A95; }
+
+.panel-default {
+  border: solid black 1px; }
+
+p {
+  color: black; }
 
 /*# sourceMappingURL=application_style.css.map */

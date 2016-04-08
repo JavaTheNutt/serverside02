@@ -1,0 +1,21 @@
+$panel_color:  #383836;
+$panel_font: #9C9A95;
+div#jumbo {
+  margin-top: 0;
+  background-color: $panel_color;
+  color: $panel_font;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.panel-default > .panel-heading {
+  background-color:  $panel_color;
+  background-image: none;
+  color: $panel_font;
+}
+
+.panel-default {
+  border: solid black 1px;
+}
+p{
+  color: black;
+}

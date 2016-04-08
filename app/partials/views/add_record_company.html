@@ -3,34 +3,10 @@
         <div class="form-group">
             <legend>Add a record company</legend>
         </div>
-        <div class="form-group">
-            <label for="companyName" class="col-sm-2 control-label">CompanyName</label>
+        <div class="form-group" ng-repeat="item in fields">
+            <label for="{{item.id}}" class="col-sm-2 control-label">{{item.label.text}}</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" ng-model="comp.companyname" id="companyName" placeholder="Company Name">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="companyCity" class="col-sm-2 control-label">CompanyCity</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="companyCity" placeholder="Company City" ng-model="comp.companycity">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="companyRep" class="col-sm-2 control-label">CompanyRep</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="companyRep" placeholder="Company Rep" ng-model="comp.companyrepresentative">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="repEmail" class="col-sm-2 control-label">RepEmail</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="repEmail" placeholder="RepEmail" ng-model="comp.representativeemail">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="website" class="col-sm-2 control-label">Website</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="website" placeholder="Website" ng-model="comp.website">
+                <input type="text" class="form-control" id="{{item.id}}" placeholder="{{item.inputField.placeholder}}" ng-model="item.inputField.model">
             </div>
         </div>
 

@@ -1,27 +1,52 @@
 angular.module('myApp')
 	.controller('RecordCompaniesCtrl',
-		['$scope','$q', 'recordCompanies','DTOptionsBuilder', 'DTColumnBuilder',
-			function ($scope,$q,  recordCompanies, DTOptionsBuilder, DTColumnBuilder) {
+		['$scope','$q', 'recordCompanies',
+			function ($scope,$q,  recordCompanies) {
+				$scope.isInEdit = false;
 				var getAllCompanies = function(done){
 					recordCompanies.getAllCompanies(function (res) {
 						$scope.list = res.data;
 						done(res.data);
 					})
 				};
-				var getTableData  = function () {
-					var deferred = $q.defer();
-					getAllCompanies(function (data) {
-						deferred.resolve(data);
-					});
-					return deferred.promise;
+				var getOneCompany = function(id, done){
+					recordCompanies.getSingleCompany(id, function (res) {
+						done(res);
+					})
 				};
-				$scope.dtOptions = DTOptionsBuilder.fromFnPromise(getTableData())
-					.withBootstrap()
-					.withPaginationType('full_numbers');
-				$scope.dtColumns = [
-					DTColumnBuilder.newColumn('companyname').withTitle('Company Name'),
-					DTColumnBuilder.newColumn('companycity').withTitle('Company City'),
-					DTColumnBuilder.newColumn('representative').withTitle('Representative')
-				];
+
+				$scope.deleteClicked = function (id) {
+					
+				};
+				$scope.tableHeadings = ['Name', 'City', 'Representative', 'Representative Email', 'Website'];
+				$scope.personToAdd = {};
+				var getPerson = {};
+				$scope.submitClicked = function (person) {
+					if ($scope.isInEdit) {
+						recordCompanies.updateCompany(person, function (data) {
+							console.log(data);
+						})
+					}
+				};
+				$scope.resetDisable = function(){
+					$scope.isInEdit = false;
+				};
+				$scope.editClicked = function(id){
+					getOneCompany(id, function (res) {
+						getPerson.id = res.data.companyid;
+						getPerson.name = res.data.companyname;
+						getPerson.city = res.data.companycity;
+						getPerson.rep = res.data.representative;
+						getPerson.repemail = res.data.representativeemail;
+						getPerson.website = res.data.website;
+						$scope.personToAdd = getPerson;
+						$scope.isInEdit = true;
+					});
+
+				};
+
+				$scope.data = getAllCompanies(function (data) {
+					$scope.data = data;
+				});
 
 }]);

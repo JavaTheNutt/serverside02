@@ -1,7 +1,9 @@
 angular.module('myApp', [
 	'ui.router',
 	'datatables',
-	'datatables.bootstrap'
+	'datatables.bootstrap',
+	'underscore',
+	'ui.bootstrap'
 ])
 .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
 	$urlRouterProvider.otherwise('/');

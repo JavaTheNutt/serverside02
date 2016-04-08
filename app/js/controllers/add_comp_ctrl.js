@@ -1,4 +1,4 @@
-angular.module('myApp').controller('AddCompanyCtrl',['$scope', function ($scope) {
+angular.module('myApp').controller('AddCompanyCtrl',['$scope', 'GenerateForm', function ($scope, GenerateForm) {
 	$scope.comp = {
 		companyname: '',
 		companycity: '',
@@ -6,7 +6,12 @@ angular.module('myApp').controller('AddCompanyCtrl',['$scope', function ($scope)
 		representativeemail: '',
 		website: ''
 	};
+	var fieldList = GenerateForm.getCompanyForm;
+	var compName = _.find(fieldList, function (item) {
+		item.name = 'companyname'
+	});
+	$scope.fields = fieldList;
 	$scope.buttonClicked = function () {
-		console.log('test');
+		console.log(fieldList);
 	};
 }]);
