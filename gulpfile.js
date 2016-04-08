@@ -18,8 +18,10 @@ gulp.task('inject', function () {
 	var wiredep = require('wiredep').stream;
 	var inject = require('gulp-inject');
 
-	var injectSrc = gulp.src(	['./app/styles/application_style.css', './app/app.js',
-			'./app/js/**/*.js'],
+	var injectSrc = gulp.src(	[
+		'./app/styles/application_style.css',
+		'./app/app.js',
+		'./app/js/**/*.js'],
 		{read: false}); // specify whether the just the filename should be read
 	/*Options for developer styles/scripts*/
 	var injectOptions = {ignorePath: '/app', addRootSlash: false}; // remove the leading public from the returned path
@@ -37,17 +39,14 @@ gulp.task('inject', function () {
 });
 /*This will watch for changes in the javascript files and will run style and inject before running the specified script.
  * Style and inject will be run asynchronously */
-gulp.task('serve', ['style', 'inject'], function () {
+gulp.task('watch', ['style', 'inject'], function () {
 	var options = {
-		script: 'server/index.js', // the file to be run
+		tasks: ['style', 'inject'], // the file to be run
 		delayTime : 1, // how long to wait before executing the task
-		env:{
-			'PORT': 5000 // the port environment variable
-		},
 		watch: jsFiles // watch the files specified in the jsFiles array
 	};
 	return nodemon(options)
 		.on('restart', function (ev) {
-			console.log('Restarting..');
+			console.log('run build');
 		});
 });

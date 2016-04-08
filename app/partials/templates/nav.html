@@ -10,8 +10,13 @@
             </button>
         </div>
         <div class="collapse navbar-collapse navHeaderCollapse">
-            <ul class="navButtons navbar-right nav navbar-nav">
-                <li ui-sref-active="active" ng-repeat="item in links"><a class="navbar-btn" ui-sref="{{item.state}}">{{item.text}}</a> </li>
+            <ul class="navbar-right nav navbar-nav">
+                <li ui-sref-active="active" ng-repeat="item in links" class="dropdown">
+                    <a href="#" class="navbar-btn dropdown-toggle" data-toggle="dropdown">{{item.name}}<b class="caret"></b> </a>
+                    <ul class="dropdown-menu">
+                        <li ui-sref-active="active" ng-repeat="item2 in item.subLinks"><a ui-sref="{{item2.state}}">{{item2.text}}</a> </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

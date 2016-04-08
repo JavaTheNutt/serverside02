@@ -6,7 +6,10 @@
     <!--bower:css-->
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="lib/datatables/media/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="lib/angular-datatables/dist/css/angular-datatables.css" />
     <!--endbower-->
+    <link rel="stylesheet" href="lib/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css">
     <!--inject:css-->
     <link rel="stylesheet" href="styles/application_style.css">
     <!--endinject-->
@@ -14,20 +17,24 @@
 <body>
 <nav-directive></nav-directive>
 <div ng-include="'partials/templates/jumbotron.html'"></div>
-<div class="container">
-    <ui-view></ui-view>
-</div>
+<ui-view></ui-view>
 <!--bower:js-->
 <script src="lib/jquery/dist/jquery.js"></script>
 <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
 <script src="lib/angular/angular.js"></script>
+<script src="lib/datatables/media/js/jquery.dataTables.js"></script>
+<script src="lib/angular-datatables/dist/angular-datatables.js"></script>
 <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
 <!--endbower-->
+<script src="lib/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
 <!--inject:js-->
 <script src="app.js"></script>
+<script src="js/controllers/add_comp_ctrl.js"></script>
 <script src="js/controllers/homeCtrl.js"></script>
 <script src="js/controllers/navCtrl.js"></script>
+<script src="js/controllers/record_companies_ctrl.js"></script>
 <script src="js/directives/nav_directive.js"></script>
+<script src="js/services/get_record_companies.js"></script>
 <!--endinject-->
 </body>
 </html>
