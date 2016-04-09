@@ -1,8 +1,13 @@
 angular.module('myApp')
 	.controller('RecordCompaniesCtrl',
-		['$scope','$q', 'recordCompanies',
-			function ($scope,$q,  recordCompanies) {
+		['$scope','$q', 'recordCompanies', 'loginService',
+			function ($scope,$q,  recordCompanies, loginService) {
 				$scope.isInEdit = false;
+				var setLoggedIn = function () {
+					loginService.checkLogin(function (res) {
+						$scope.loggedIn = res;
+					})
+				};
 				var getAllCompanies = function(done){
 					recordCompanies.getAllCompanies(function (res) {
 						$scope.list = res.data;
@@ -14,23 +19,35 @@ angular.module('myApp')
 						done(res);
 					})
 				};
-
 				$scope.deleteClicked = function (id) {
-					
+					recordCompanies.deleteCompany(id, function (res) {
+						console.log(res);
+					})
 				};
 				$scope.tableHeadings = ['Name', 'City', 'Representative', 'Representative Email', 'Website'];
 				$scope.personToAdd = {};
 				var getPerson = {};
+				
 				$scope.submitClicked = function (person) {
-					if ($scope.isInEdit) {
-						recordCompanies.updateCompany(person, function (data) {
-							console.log(data);
-						})
+					if($scope.addRecordCompany.$valid){
+						if ($scope.isInEdit) {
+							recordCompanies.updateCompany(person, function (data) {
+								console.log(data);
+							});
+						}else{
+							recordCompanies.insertCompany(person, function () {
+								console.log('insert callback');
+							});
+						}
+					} else{
+						console.log('Form Invalid');
 					}
 				};
+
 				$scope.resetDisable = function(){
 					$scope.isInEdit = false;
 				};
+
 				$scope.editClicked = function(id){
 					getOneCompany(id, function (res) {
 						getPerson.id = res.data.companyid;
@@ -42,11 +59,10 @@ angular.module('myApp')
 						$scope.personToAdd = getPerson;
 						$scope.isInEdit = true;
 					});
-
 				};
 
 				$scope.data = getAllCompanies(function (data) {
 					$scope.data = data;
 				});
-
+				setLoggedIn();
 }]);

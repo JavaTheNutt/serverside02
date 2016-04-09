@@ -12,10 +12,16 @@ div#jumbo {
   background-image: none;
   color: $panel_font;
 }
-
+div#navBar{
+  margin-bottom: 0;
+}
 .panel-default {
   border: solid black 1px;
 }
 p{
   color: black;
+}
+div#loginBox{
+  margin-top: 5px;
+  margin-bottom: 5px;
 }

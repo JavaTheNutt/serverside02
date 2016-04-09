@@ -11,6 +11,9 @@
         </div>
         <div class="collapse navbar-collapse navHeaderCollapse">
             <ul class="navbar-right nav navbar-nav">
+                <li>
+                    <button type="button" class="navbar-btn btn-danger btn" ng-show="localLoggedIn" ng-click="logoutClicked()">logout</button>
+                </li>
                 <li ui-sref-active="active" ng-repeat="item in links" class="dropdown" uib-dropdown on-toggle="toggled(open)">
                         <a href="#" uib-dropdown-toggle >{{item.name}}<b class="caret"></b> </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
@@ -18,6 +21,19 @@
                     </ul>
                 </li>
             </ul>
+            <center>
+                <form class="form-inline navbar-form" ng-hide="localLoggedIn">
+                <div class="form-group">
+                    <label class="sr-only" for="uname">username</label>
+                    <input type="text" class="form-control" name="uname" id="uname" placeholder="Username or Email" ng-model="user.uname">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="password">password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Username or Email" ng-model="user.password">
+                </div>
+                <button type="submit" class="btn btn-primary" ng-click="submitClicked(user)">Submit</button>
+            </form>
+            </center>
         </div>
     </div>
 </div>

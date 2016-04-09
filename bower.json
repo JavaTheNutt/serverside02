@@ -5,7 +5,6 @@
   "dependencies": {
     "bootstrap": "~3.3.6",
     "font-awesome": "~4.5.0",
-    "angular-datatables": "~0.5.4",
     "angular": "~1.5.3",
     "angular-ui-router": "~0.2.18",
     "underscore": "~1.8.3",
@@ -25,12 +24,6 @@
         "less/font-awesome.less",
         "css/font-awesome.css",
         "scss/font-awesome.scss"
-      ]
-    },
-    "angular-datatables": {
-      "main": [
-        "dist/angular-datatables.js",
-        "dist/css/angular-datatables.css"
       ]
     }
   }
