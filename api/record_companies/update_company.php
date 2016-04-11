@@ -1,5 +1,5 @@
 <?php
-require '../inc/init.inc.php';
+require '../inc/init_record_company.inc.php';
 header('Content-Type: application/json');
 if(isset($_GET['stat'])){
 	$json = file_get_contents('php://input');

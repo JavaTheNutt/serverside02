@@ -1,4 +1,8 @@
 <div class="jumbotron text-center" id="jumbo" ng-controller="JumboCtrl">
     <h1>Welcome to the Music Store</h1>
-    <p class="text-center" ng-show="loggedIn">Administration</p>
+    <p class="text-center" ng-show="adminLoggedIn">Administration</p>
+</div>
+<div class="container" ng-hide="localLoggedIn">
+    <h3 class="text-center">You are not logged in. Please log in or <a ui-sref="add_cust">Register</a> for full
+        functionality</h3>
 </div>

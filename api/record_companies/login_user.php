@@ -12,12 +12,19 @@ if(isset($_GET['login'])){
 	$response = array("status"=> "404");
 }
 if(isset($_GET['getlogin'])){
-	$loggedIn = $_SESSION['adminLoggedIn'];
-	$response = $loggedIn ? array("loggedIn"=> true): array("loggedIn"=> false);
+	$adminLoggedIn = $_SESSION['adminLoggedIn'];
+	$custLoggedIn = $_SESSION['custLoggedIn'];
+	$response = array("adminLoggedIn"=> $adminLoggedIn, "custLoggedIn"=> $custLoggedIn);
 }
 if(isset($_GET['logout'])){
 	logOutUser();
 	$loggedIn = $_SESSION['adminLoggedIn'];
 	$response = $loggedIn ? array("loggedIn"=> true): array("loggedIn"=> false);
+}
+if(isset($_GET['logincust'])){
+	$json = file_get_contents('php://input');
+	$customer = json_decode($json, true);
+	$custCred = $customer['customer'];
+	$response =  json_encode(logInCustomer($custCred['uname'], $custCred['password'], $dbh));
 }
 echo json_encode($response);

@@ -1,20 +1,20 @@
 angular.module('myApp')
 	.controller('RecordCompaniesCtrl',
-		['$scope','$q', 'recordCompanies', 'loginService',
-			function ($scope,$q,  recordCompanies, loginService) {
+		['$scope', '$q', 'recordCompanies', 'loginService',
+			function ($scope, $q, recordCompanies, loginService) {
 				$scope.isInEdit = false;
 				var setLoggedIn = function () {
 					loginService.checkLogin(function (res) {
 						$scope.loggedIn = res;
 					})
 				};
-				var getAllCompanies = function(done){
+				var getAllCompanies = function (done) {
 					recordCompanies.getAllCompanies(function (res) {
 						$scope.list = res.data;
 						done(res.data);
 					})
 				};
-				var getOneCompany = function(id, done){
+				var getOneCompany = function (id, done) {
 					recordCompanies.getSingleCompany(id, function (res) {
 						done(res);
 					})
@@ -25,30 +25,31 @@ angular.module('myApp')
 					})
 				};
 				$scope.tableHeadings = ['Name', 'City', 'Representative', 'Representative Email', 'Website'];
-				$scope.personToAdd = {};
+				$scope.personToAdd = {website: 'http://'};
 				var getPerson = {};
-				
+
 				$scope.submitClicked = function (person) {
-					if($scope.addRecordCompany.$valid){
+					if ($scope.addRecordCompany.$valid) {
 						if ($scope.isInEdit) {
 							recordCompanies.updateCompany(person, function (data) {
 								console.log(data);
 							});
-						}else{
+						} else {
 							recordCompanies.insertCompany(person, function () {
 								console.log('insert callback');
 							});
 						}
-					} else{
+					} else {
 						console.log('Form Invalid');
 					}
 				};
 
-				$scope.resetDisable = function(){
+				$scope.resetDisable = function () {
 					$scope.isInEdit = false;
+					$scope.addRecordCompany.$setPristine();
 				};
 
-				$scope.editClicked = function(id){
+				$scope.editClicked = function (id) {
 					getOneCompany(id, function (res) {
 						getPerson.id = res.data.companyid;
 						getPerson.name = res.data.companyname;
@@ -65,4 +66,4 @@ angular.module('myApp')
 					$scope.data = data;
 				});
 				setLoggedIn();
-}]);
+			}]);

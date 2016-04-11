@@ -1,5 +1,5 @@
 angular.module('myApp').directive('navDirective', function () {
-	return{
+	return {
 		restrict: 'E',
 		templateUrl: 'partials/templates/nav.html',
 		controller: 'NavCtrl',

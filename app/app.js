@@ -1,7 +1,8 @@
 angular.module('myApp', [
 	'ui.router',
 	'underscore',
-	'ui.bootstrap'
+	'ui.bootstrap',
+	'ngMessages'
 ])
 .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
 	$urlRouterProvider.otherwise('/');
@@ -15,5 +16,10 @@ angular.module('myApp', [
 			url: '/record_companies/all',
 			templateUrl: 'partials/views/record_companies.html',
 			controller: 'RecordCompaniesCtrl'
+		})
+		.state('add_cust', {
+			url: '/add_customer',
+			templateUrl: 'partials/views/add_customer.html',
+			controller: 'AddCustCtrl'
 		})
 }]);

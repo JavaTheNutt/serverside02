@@ -1,5 +1,6 @@
 $panel_color:  #383836;
 $panel_font: #9C9A95;
+$error_color : red;
 div#jumbo {
   margin-top: 0;
   background-color: $panel_color;
@@ -26,7 +27,9 @@ div#loginBox{
   margin-bottom: 5px;
 }
 .invalidField{
-  border: solid red 1px;
-  color: white;
-  background-color: lightpink;
+  border: solid $error_color 1px;
+  color: $error_color;
+}
+.invalidFieldLabel{
+  color: $error_color;
 }

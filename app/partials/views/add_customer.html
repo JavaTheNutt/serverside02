@@ -1,0 +1,155 @@
+<div class="container">
+    <form class="form-horizontal" role="form" name="addCustForm" novalidate>
+        <div class="form-group">
+            <legend>Add Customer</legend>
+        </div>
+        <div class="form-group">
+            <label for="custName" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <div class="row">
+                    <input type="text" class="form-control" id="custName" name="custName" placeholder="Customer Name"
+                           ng-model="customer.custName"
+                           required pattern="[A-Z][a-z]+( [A-Z][a-z]+)?"
+                           ng-class="{'invalidField': addCustForm.custName.$dirty && addCustForm.custName.$invalid }"
+                           uib-tooltip="Please enter a properly capitalised customer name" tooltip-placement="top"
+                           tooltip-trigger="mouseenter"
+                           tooltip-enable="addCustForm.custName.$dirty && addCustForm.custName.$invalid" minlength="3"
+                           maxlength="50"
+                    >
+                </div>
+                <div class="row">
+                    <div ng-messages="addCustForm.custName.$error" ng-if="addCustForm.custName.$touched">
+                        <p ng-message="required" class="invalidFieldLabel">This field is required</p>
+                        <p ng-message="pattern" class="invalidFieldLabel">Name should be properly capitalised</p>
+                        <p ng-message="minlength" class="invalidFieldLabel">Minimum three letters</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <!--todo find a pattern that can be used for a street address-->
+            <label for="custStreet" class="col-sm-2 control-label">Street</label>
+            <div class="col-sm-10">
+                <div class="row">
+                    <input type="text" class="form-control" id="custStreet" name="custStreet"
+                           placeholder="Customer Street" ng-model="customer.custStreet"
+                           required
+                           ng-class="{'invalidField': addCustForm.custStreet.$dirty && addCustForm.custStreet.$invalid }"
+                           uib-tooltip="Please enter a properly capitalised customer street" tooltip-placement="top"
+                           tooltip-trigger="mouseenter"
+                           tooltip-enable="addCustForm.custStreet.$dirty && addCustForm.custStreet.$invalid"
+                           maxlength="30" minlength="3"
+                    >
+                </div>
+                <div class="row">
+                    <div ng-messages="addCustForm.custStreet.$error" ng-if="addCustForm.custStreet.$touched">
+                        <p ng-message="required" class="invalidFieldLabel">This field is required</p>
+                        <p ng-message="pattern" class="invalidFieldLabel">Street should be properly capitalised</p>
+                        <p ng-message="minlength" class="invalidFieldLabel">Minimum three letters</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="custTown" class="col-sm-2 control-label">Town</label>
+            <div class="col-sm-10">
+                <div class="row">
+                    <input type="text" class="form-control" id="custTown" name="custTown" placeholder="Customer Town"
+                           ng-model="customer.custTown"
+                           required pattern="[A-Z][a-z]+( [A-Z][a-z]+)?"
+                           ng-class="{'invalidField': addCustForm.custTown.$dirty && addCustForm.custTown.$invalid }"
+                           uib-tooltip="Please enter a properly capitalised customer town" tooltip-placement="top"
+                           tooltip-trigger="mouseenter"
+                           tooltip-enable="addCustForm.custTown.$dirty && addCustForm.custTown.$invalid" maxlength="20"
+                           minlength="3"
+                    >
+                </div>
+                <div class="row">
+                    <div ng-messages="addCustForm.custTown.$error" ng-if="addCustForm.custTown.$touched">
+                        <p ng-message="required" class="invalidFieldLabel">This field is required</p>
+                        <p ng-message="pattern" class="invalidFieldLabel">Town should be properly capitalised</p>
+                        <p ng-message="minlength" class="invalidFieldLabel">Minimum three letters</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="custEmail" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <div class="row">
+                    <input type="email" class="form-control" id="custEmail" name="custEmail"
+                           placeholder="Customer Email" ng-model="customer.custEmail"
+                           required pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"
+                           ng-class="{'invalidField': addCustForm.custEmail.$dirty && addCustForm.custEmail.$invalid }"
+                           uib-tooltip="{{emailTooltip}}" tooltip-placement="top"
+                           tooltip-trigger="mouseenter"
+                           tooltip-enable="addCustForm.custEmail.$dirty && addCustForm.custEmail.$invalid" minlength="3" maxlength="50"
+                           cust-email
+                    >
+                </div>
+                <div class="row">
+                    <div ng-messages="addCustForm.custEmail.$error" ng-if="addCustForm.custEmail.$touched">
+                        <p ng-message="required" class="invalidFieldLabel">This field is required</p>
+                        <p ng-message="pattern" class="invalidFieldLabel">Please enter a valid email address</p>
+                        <p ng-message="minlength" class="invalidFieldLabel">Minimum three letters</p>
+                        <p ng-message="emailTaken" class="invalidFieldLabel">Email already in use</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="custPassword" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+                <div class="row">
+                    <input type="password" class="form-control" id="custPassword" name="custPassword"
+                       placeholder="Customer Password" ng-model="customer.custPassword"
+                       required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,}$"
+                       ng-class="{'invalidField': addCustForm.custPassword.$dirty && addCustForm.custPassword.$invalid }"
+                       uib-tooltip="Please enter a password at least 6 characters in length containing at least one uppercase letter and at least one number"
+                       tooltip-placement="top"
+                       tooltip-trigger="mouseenter"
+                       tooltip-enable="addCustForm.custPassword.$dirty && addCustForm.custPassword.$invalid" maxlength="40" minlength="6"
+                    >
+                </div>
+                <div class="row">
+                    <div ng-messages="addCustForm.custPassword.$error" ng-if="addCustForm.custPassword.$touched">
+                        <p ng-message="required" class="invalidFieldLabel">This field is required</p>
+                        <p ng-message="pattern" class="invalidFieldLabel">Please enter a password at least 6 characters in length containing at least one uppercase letter and at least one number"</p>
+                        <p ng-message="minlength" class="invalidFieldLabel">Minimum six letters</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="custConfPassword" class="col-sm-2 control-label">Confirm Password</label>
+            <div class="col-sm-10">
+                <div class="row">
+                    <input type="password" class="form-control" id="custConfPassword" name="custConfPassword"
+                       placeholder="Confirm Password" ng-model="customer.custConfPassword"
+                       required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,}$"
+                       ng-class="{'invalidField': addCustForm.custConfPassword.$dirty && addCustForm.custConfPassword.$invalid }"
+                       uib-tooltip="Please enter a password at least 6 characters in length containing at least one uppercase letter and at least one number"
+                       tooltip-placement="top"
+                       tooltip-trigger="mouseenter"
+                       tooltip-enable="addCustForm.custConfPassword.$dirty && addCustForm.custConfPassword.$invalid" maxlength="40" minlength="6" match="customer.custPassword"
+                    >
+                </div>
+                <div class="row">
+                    <div ng-messages="addCustForm.custConfPassword.$error" ng-if="addCustForm.custConfPassword.$touched">
+                        <p ng-message="required" class="invalidFieldLabel">This field is required</p>
+                        <p ng-message="pattern" class="invalidFieldLabel">Please enter a password at least 6 characters in length containing at least one uppercase letter and at least one number"</p>
+                        <p ng-message="minlength" class="invalidFieldLabel">Minimum six letters</p>
+                        <p ng-message="mismatch" class="invalidFieldLabel">Passwords must match</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <button type="button" class="btn btn-primary" ng-click="submitClicked(customer)"
+                        ng-disabled="addCustForm.$invalid">Submit
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

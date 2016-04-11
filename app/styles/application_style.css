@@ -25,7 +25,9 @@ div#loginBox {
 
 .invalidField {
   border: solid red 1px;
-  color: white;
-  background-color: lightpink; }
+  color: red; }
+
+.invalidFieldLabel {
+  color: red; }
 
 /*# sourceMappingURL=application_style.css.map */
