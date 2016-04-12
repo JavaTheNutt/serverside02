@@ -25,6 +25,18 @@ if(isset($_GET['logincust'])){
 	$json = file_get_contents('php://input');
 	$customer = json_decode($json, true);
 	$custCred = $customer['customer'];
-	$response =  json_encode(logInCustomer($custCred['uname'], $custCred['password'], $dbh));
+	$uname = $custCred['uname'];
+	$pass = $custCred['password'];
+	/*$response = array('uname'=> $uname, 'password'=> $pass);*/
+
+	$response =  logInCustomer($uname, $pass, $dbh);
+}
+if(isset($_GET['getCurrentName'])){
+	if(isset($_SESSION['custName'])){
+		$name = $_SESSION['custName'];
+		$response = array('name'=> $name);
+	}else{
+		$response = array('name' => null);
+	}
 }
 echo json_encode($response);

@@ -12,21 +12,16 @@
         <div class="collapse navbar-collapse navHeaderCollapse">
             <ul class="navbar-right nav navbar-nav">
                 <li>
-                    <button type="button" class="navbar-btn btn-danger btn" ng-show="localLoggedIn"
+                    <button type="button" class="navbar-btn btn-danger btn" ng-show="$parent.adminLoggedIn || $parent.custLoggedIn"
                             ng-click="logoutClicked()">logout
                     </button>
                 </li>
-                <li ui-sref-active="active" ng-repeat="item in links" class="dropdown" uib-dropdown
-                    on-toggle="toggled(open)">
-                    <a href="#" uib-dropdown-toggle>{{item.name}}<b class="caret"></b> </a>
-                    <ul class="dropdown-menu" uib-dropdown-menu>
-                        <li ui-sref-active="active" ng-repeat="item2 in item.subLinks"><a ui-sref="{{item2.state}}">{{item2.text}}</a>
-                        </li>
-                    </ul>
+                <li ui-sref-active="active" ng-repeat="item in links" >
+                   <a ui-sref="{{item.state}}">{{item.name}}</a>
                 </li>
             </ul>
             <center>
-                <form class="form-inline navbar-form" ng-hide="localLoggedIn">
+                <form class="form-inline navbar-form" ng-hide="$parent.adminLoggedIn || $parent.custLoggedIn">
                     <div class="form-group">
                         <label class="sr-only" for="uname">username</label>
                         <input type="text" class="form-control" name="uname" id="uname" placeholder="Username or Email"

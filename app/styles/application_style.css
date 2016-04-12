@@ -30,4 +30,7 @@ div#loginBox {
 .invalidFieldLabel {
   color: red; }
 
+a:link .tableHeading, a:visited .tableHeading {
+  color: black; }
+
 /*# sourceMappingURL=application_style.css.map */

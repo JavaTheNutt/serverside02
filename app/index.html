@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="styles/application_style.css">
     <!--endinject-->
 </head>
-<body ng-cloak>
+<body ng-cloak ng-controller="MainCtrl">
 <nav-directive></nav-directive>
 <div ng-include="'partials/templates/jumbotron.html'"></div>
 <ui-view></ui-view>
@@ -31,6 +31,7 @@
 <script src="js/controllers/add_customer_ctrl.js"></script>
 <script src="js/controllers/homeCtrl.js"></script>
 <script src="js/controllers/jumbtron_ctrl.js"></script>
+<script src="js/controllers/main_ctrl.js"></script>
 <script src="js/controllers/navCtrl.js"></script>
 <script src="js/controllers/record_companies_ctrl.js"></script>
 <script src="js/directives/cust_email.js"></script>

@@ -3,6 +3,6 @@ angular.module('myApp').directive('navDirective', function () {
 		restrict: 'E',
 		templateUrl: 'partials/templates/nav.html',
 		controller: 'NavCtrl',
-		scope: '='
+		scope: true
 	}
 });

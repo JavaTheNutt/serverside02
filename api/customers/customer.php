@@ -8,4 +8,11 @@ if(isset($_GET['allUsernames'])){
 		array_push($data, $val['customeremail']);
 	}
 	echo json_encode($data);
-}
+}elseif(isset($_GET['add_cust'])){
+	$json = file_get_contents('php://input');
+	$json = json_decode($json, true);
+	$data = $json['cust'];
+	$customer->insertCustomer($data['custName'], $data['custStreet'], $data['custTown'], $data['custEmail'], $data['custPassword']);
+	$cust = $customer->getByEmail($data['custEmail']);
+	echo json_encode($cust);
+} 

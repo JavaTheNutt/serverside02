@@ -3,15 +3,16 @@ angular.module('myApp')
 		['$scope', '$q', 'recordCompanies', 'loginService',
 			function ($scope, $q, recordCompanies, loginService) {
 				$scope.isInEdit = false;
+				$scope.data  =[];
 				var setLoggedIn = function () {
 					loginService.checkLogin(function (res) {
 						$scope.loggedIn = res;
+						console.log(res);
 					})
 				};
-				var getAllCompanies = function (done) {
+				var getAllCompanies = function () {
 					recordCompanies.getAllCompanies(function (res) {
-						$scope.list = res.data;
-						done(res.data);
+						$scope.data = res.data;
 					})
 				};
 				var getOneCompany = function (id, done) {
@@ -21,11 +22,16 @@ angular.module('myApp')
 				};
 				$scope.deleteClicked = function (id) {
 					recordCompanies.deleteCompany(id, function (res) {
-						console.log(res);
-					})
+						getAllCompanies();
+					});
+
 				};
 				$scope.tableHeadings = ['Name', 'City', 'Representative', 'Representative Email', 'Website'];
 				$scope.personToAdd = {website: 'http://'};
+				$scope.sortType = 'companycity';
+				$scope.sortReverse = false;
+				$scope.searchCompanies = '';
+
 				var getPerson = {};
 
 				$scope.submitClicked = function (person) {
@@ -39,6 +45,7 @@ angular.module('myApp')
 								console.log('insert callback');
 							});
 						}
+						getAllCompanies();
 					} else {
 						console.log('Form Invalid');
 					}
@@ -62,8 +69,6 @@ angular.module('myApp')
 					});
 				};
 
-				$scope.data = getAllCompanies(function (data) {
-					$scope.data = data;
-				});
+				getAllCompanies();
 				setLoggedIn();
 			}]);

@@ -4,6 +4,7 @@ angular.module('myApp', [
 	'ui.bootstrap',
 	'ngMessages'
 ])
+	
 .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
 	$urlRouterProvider.otherwise('/');
 	$stateProvider
