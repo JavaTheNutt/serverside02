@@ -61,7 +61,7 @@ angular.module('myApp')
 					var json = JSON.parse(JSON.stringify(res));
 					console.log('recived name');
 					console.log(json);
-					successCallback(json.data.name);
+					successCallback(json.data.name, json.data.id);
 				})
 			}
 		}

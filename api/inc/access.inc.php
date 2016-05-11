@@ -15,6 +15,13 @@ function logInUser($userName, $password, $db){
 		$_SESSION['adminLoggedIn'] = false;
 	}
 }
+function isCustLoggedIn(){
+	return $_SESSION['custLoggedIn'];
+}
+function isAdminLoggedIn()
+{
+	return $_SESSION['adminLoggedIn'];
+}
 function logInCustomer($email, $password, $db){
 	$stmt = $db->prepare("SELECT * FROM customers WHERE customeremail = :username AND customerpassword = :password");
 	$password = SHA1($password);
@@ -27,9 +34,11 @@ function logInCustomer($email, $password, $db){
 		$_SESSION['custLoggedIn'] = true;
 		$cust = $stmt->fetch(PDO::FETCH_ASSOC);
 		$_SESSION['custName'] = $cust['customername'];
+		$_SESSION['custId'] = $cust['customerid'];
 	} else{
 		$_SESSION['custLoggedIn'] = false;
 		unset($_SESSION['custName']);
+		unset($_SESSION['custId']);
 		$cust = array('loggedIn'=> false);
 	}
 	return $cust;
@@ -37,4 +46,10 @@ function logInCustomer($email, $password, $db){
 function logOutUser(){
 	$_SESSION['adminLoggedIn'] = false;
 	$_SESSION['custLoggedIn'] = false;
+	if(isset($_SESSION['custName'])){
+		unset($_SESSION['custName']);
+	}
+	if(isset($_SESSION['custId'])){
+		unset($_SESSION['custId']);
+	}
 }

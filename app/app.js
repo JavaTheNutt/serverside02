@@ -23,4 +23,19 @@ angular.module('myApp', [
 			templateUrl: 'partials/views/add_customer.html',
 			controller: 'AddCustCtrl'
 		})
+		.state('artists', {
+			url: '/artists',
+			templateUrl: 'partials/views/artists.html',
+			controller: 'ArtistCtrl'
+		})
+		.state('albums', {
+			url:  '/albums',
+			templateUrl: 'partials/views/albums.html',
+			controller: 'AlbumCtrl'
+		})
+		.state('add_review', {
+			url: '/add_review',
+			templateUrl: 'partials/views/add_review.html',
+			controller: 'AddReviewCtrl'
+		})
 }]);

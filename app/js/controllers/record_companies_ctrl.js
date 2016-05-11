@@ -1,7 +1,7 @@
 angular.module('myApp')
 	.controller('RecordCompaniesCtrl',
-		['$scope', '$q', 'recordCompanies', 'loginService',
-			function ($scope, $q, recordCompanies, loginService) {
+		['$scope', '$state', 'recordCompanies', 'loginService',
+			function ($scope, $state, recordCompanies, loginService) {
 				$scope.isInEdit = false;
 				$scope.data  =[];
 				var setLoggedIn = function () {
@@ -39,10 +39,18 @@ angular.module('myApp')
 						if ($scope.isInEdit) {
 							recordCompanies.updateCompany(person, function (data) {
 								console.log(data);
+								if($scope.$parent.sentFromAlbum){
+									$scope.$parent.sentFromAlbum = false;
+									$state.go('albums');
+								}
 							});
 						} else {
 							recordCompanies.insertCompany(person, function () {
 								console.log('insert callback');
+								if($scope.$parent.sentFromAlbum){
+									$scope.$parent.sentFromAlbum = false;
+									$state.go('albums');
+								}
 							});
 						}
 						getAllCompanies();
@@ -68,7 +76,10 @@ angular.module('myApp')
 						$scope.isInEdit = true;
 					});
 				};
-
+				$scope.showAlbumsClicked = function(id){
+					$scope.$parent.companyToShow  = '' + id;
+					$state.go('albums');
+				};
 				getAllCompanies();
 				setLoggedIn();
 			}]);

@@ -34,7 +34,8 @@ if(isset($_GET['logincust'])){
 if(isset($_GET['getCurrentName'])){
 	if(isset($_SESSION['custName'])){
 		$name = $_SESSION['custName'];
-		$response = array('name'=> $name);
+		$id = $_SESSION['custId'];
+		$response = array('name'=> $name, 'id'=> $id);
 	}else{
 		$response = array('name' => null);
 	}

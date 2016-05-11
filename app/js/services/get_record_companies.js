@@ -50,7 +50,7 @@ angular.module('myApp')
 					}
 				};
 				$http(req).then(function (res) {
-					console.log('recived from insert api')
+					successCallback();
 				});
 			},
 			deleteCompany: function (id, successcallback) {

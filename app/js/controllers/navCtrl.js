@@ -3,6 +3,14 @@ angular.module('myApp').controller('NavCtrl', ['$scope', '$window', 'loginServic
 		{
 			name: 'Record Companies',
 			state: 'all_comp'
+		},
+		{
+			name: 'Artists',
+			state: 'artists'
+		},
+		{
+			name: 'Albums',
+			state: 'albums'
 		}
 	];
 	$scope.user = {};
@@ -33,6 +41,5 @@ angular.module('myApp').controller('NavCtrl', ['$scope', '$window', 'loginServic
 				$scope.$parent.refreshLogin();
 			})
 		}
-
 	};
 }]);

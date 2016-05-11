@@ -1,4 +1,8 @@
 angular.module('myApp').controller('MainCtrl', ['$scope', 'loginService', function ($scope, loginService) {
+	$scope.sentFromAlbum = false;
+	$scope.companyToShow = '-1';
+	$scope.artistToShow = '-1';
+	$scope.albumToReview = '-1';
 	var setCurrentCustName = function(custName){
 		$scope.currentCustName = custName;
 	};
@@ -8,8 +12,9 @@ angular.module('myApp').controller('MainCtrl', ['$scope', 'loginService', functi
 			$scope.adminLoggedIn = data.adminLoggedIn;
 			$scope.custLoggedIn = data.custLoggedIn;
 			if($scope.custLoggedIn){
-				loginService.getCurrentCustName(function (res) {
-					$scope.currentCustName = res;
+				loginService.getCurrentCustName(function (name, id) {
+					$scope.currentCustName = name;
+					$scope.currentCustId = id;
 				})
 			}
 		})
@@ -21,4 +26,5 @@ angular.module('myApp').controller('MainCtrl', ['$scope', 'loginService', functi
 	$scope.setName = function (name) {
 		setCurrentCustName(name);
 	}
+	
 }]);

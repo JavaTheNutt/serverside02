@@ -29,4 +29,10 @@ class Customer{
 		$stmt->execute();
 		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
+	public function getById($id){
+		$stmt = $this->db->prepare("SELECT * FROM customers where customerid = :id");
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
 }

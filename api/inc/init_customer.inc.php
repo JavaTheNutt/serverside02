@@ -1,5 +1,5 @@
 <?php
-require 'customer.inc.php';
-require 'db.inc.php';
+require_once 'init.inc.php';
+require_once 'customer.inc.php';
 
 $customer = new Customer($dbh);
