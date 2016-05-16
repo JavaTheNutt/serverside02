@@ -51,6 +51,11 @@ angular.module('myApp').controller('AlbumCtrl', ['$scope', '$state', 'Albums',  
 		return tempAlbums;
 	};
 	$scope.searchCriteriaChanged = function () {
+		if($scope.specificSearch === 'standard'){
+			console.log('standard view');
+			$scope.searchRecordsType = 'all'
+		}
+		console.log('Search criteria changed');
 		if($scope.searchRecordsType === 'all'){
 			$scope.artistSearchValue.artistid = '-1';
 			$scope.companySearchValue.companyid = '-1';
@@ -79,6 +84,7 @@ angular.module('myApp').controller('AlbumCtrl', ['$scope', '$state', 'Albums',  
 		var compId = parseInt($scope.companySearchValue.companyid);
 		console.log('art\t' + artId + '\ncomp\t' + compId);
 		if(artId < 0 && compId < 0){
+			console.log('setting all albums');
 			$scope.albums = allAlbums;
 			console.log($scope.albums.length);
 			return;

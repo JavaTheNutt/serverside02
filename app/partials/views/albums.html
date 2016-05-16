@@ -91,11 +91,11 @@
 	<div class="form-group">
 		<div class="radio">
 			<label>
-				<input type="radio" name="searchType" id="standardInput" value="standard" checked="checked" ng-model="specificSearch">
+				<input type="radio" name="searchType" id="standardInput" value="standard" checked="checked" ng-model="specificSearch" ng-change="searchCriteriaChanged()">
 				Standard
 			</label>
 			<label>
-				<input type="radio" name="searchType" id="specificInput" value="specific" ng-model="specificSearch">
+				<input type="radio" name="searchType" id="specificInput" value="specific" ng-model="specificSearch" ng-change="searchCriteriaChanged()">
 				Specific
 			</label>
 		</div>
@@ -153,10 +153,6 @@
 						<table class="table table-striped table-condensed table-hover">
 							<thead>
 							<tr>
-								<!--<th>Release Year</th>
-								<th>Artist</th>
-								<th>Genre</th>
-								<th>Record Label</th>-->
 								<th>Albums</th>
 							</tr>
 							</thead>

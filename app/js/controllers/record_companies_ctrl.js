@@ -42,6 +42,11 @@ angular.module('myApp')
 								if($scope.$parent.sentFromAlbum){
 									$scope.$parent.sentFromAlbum = false;
 									$state.go('albums');
+								}else{
+									$scope.personToAdd ={};
+									$scope.personToAdd.website = 'http://';
+									$scope.addRecordCompany.$setPristine(true);
+									$scope.isInEdit = false;
 								}
 							});
 						} else {
@@ -50,6 +55,11 @@ angular.module('myApp')
 								if($scope.$parent.sentFromAlbum){
 									$scope.$parent.sentFromAlbum = false;
 									$state.go('albums');
+								}else{
+									$scope.personToAdd ={};
+									$scope.personToAdd.website = 'http://';
+									$scope.addRecordCompany.$setPristine(true);
+									$scope.isInEdit = false;
 								}
 							});
 						}
