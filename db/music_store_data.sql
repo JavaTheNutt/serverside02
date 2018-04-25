@@ -1,18 +1,3 @@
-CREATE TABLE albums
-(
-    albumid INT(11) PRIMARY KEY NOT NULL,
-    albumname VARCHAR(50) NOT NULL,
-    year YEAR(4) NOT NULL,
-    genre VARCHAR(15) NOT NULL,
-    artist INT(11),
-    recordcompany INT(11),
-    albumartwork VARCHAR(200) NOT NULL,
-    CONSTRAINT fk_artist FOREIGN KEY (artist) REFERENCES artists (artistid),
-    CONSTRAINT fk_recordcompany FOREIGN KEY (recordcompany) REFERENCES recordcompanies (companyid)
-);
-CREATE INDEX artist ON albums (artist);
-CREATE UNIQUE INDEX name ON albums (albumname);
-CREATE INDEX recordcompany ON albums (recordcompany);
 CREATE TABLE artists
 (
     artistid INT(11) PRIMARY KEY NOT NULL,
@@ -20,6 +5,7 @@ CREATE TABLE artists
     city VARCHAR(20),
     website VARCHAR(50)
 );
+
 CREATE UNIQUE INDEX name ON artists (artistname);
 CREATE TABLE customers
 (
@@ -40,6 +26,21 @@ CREATE TABLE recordcompanies
     website VARCHAR(40) NOT NULL
 );
 CREATE UNIQUE INDEX companyname ON recordcompanies (companyname);
+CREATE TABLE albums
+(
+    albumid INT(11) PRIMARY KEY NOT NULL,
+    albumname VARCHAR(50) NOT NULL,
+    year YEAR(4) NOT NULL,
+    genre VARCHAR(15) NOT NULL,
+    artist INT(11),
+    recordcompany INT(11),
+    albumartwork VARCHAR(200) NOT NULL,
+    CONSTRAINT fk_artist FOREIGN KEY (artist) REFERENCES artists (artistid),
+    CONSTRAINT fk_recordcompany FOREIGN KEY (recordcompany) REFERENCES recordcompanies (companyid)
+);
+CREATE INDEX artist ON albums (artist);
+CREATE UNIQUE INDEX name ON albums (albumname);
+CREATE INDEX recordcompany ON albums (recordcompany);
 CREATE TABLE review
 (
     reviewid INT(11) PRIMARY KEY NOT NULL,
