@@ -62,9 +62,7 @@ INSERT INTO musicstore.customers (customerid, customername, customerstreet, cust
 INSERT INTO musicstore.customers (customerid, customername, customerstreet, customertown, customeremail, customerpassword) VALUES (35, 'Jamie Lannister', 'Casterly Rock', 'The Westerlands', 'jlannister@gmail.com', '3044a3dc71f644433692a79e1bbe84c1157eb15a');
 INSERT INTO musicstore.customers (customerid, customername, customerstreet, customertown, customeremail, customerpassword) VALUES (36, 'Joe Wemyss', '20 Barrack Street', 'Waterford', 'joewemyss3@gmail.com', '4f573d5ce6a6a41ff43560c5dd66aa9b9dabc1a9');
 INSERT INTO musicstore.users (uname, password) VALUES ('root', 'dc76e9f0c0006e8f919e0c515c66dbba3982f785');
-INSERT INTO musicstore.review (reviewid, review, album, customer) VALUES (1, 'A generation defining album', 21, 36);
-INSERT INTO musicstore.review (reviewid, review, album, customer) VALUES (2, 'A great album', 22, 36);
-INSERT INTO musicstore.review (reviewid, review, album, customer) VALUES (3, 'A musical masterpiece', 21, 36);
+
 INSERT INTO musicstore.recordcompanies (companyid, companyname, companycity, representative, representativeemail, website) VALUES (2, 'Geffen', 'New York', 'James Murphy', 'jmurphy@geffen.com', 'https://www.geffen.com');
 INSERT INTO musicstore.recordcompanies (companyid, companyname, companycity, representative, representativeemail, website) VALUES (3, 'MCD', 'Detroit', 'Paul White', 'pwhite@mcd.org', 'https://www.mcd.org');
 INSERT INTO musicstore.recordcompanies (companyid, companyname, companycity, representative, representativeemail, website) VALUES (6, 'Sony Music', 'Chicago', 'Jason Walshe', 'jwalshe@sony.com', 'https://www.sony.com');
@@ -95,3 +93,6 @@ INSERT INTO musicstore.albums (albumid, albumname, year, genre, artist, recordco
 INSERT INTO musicstore.albums (albumid, albumname, year, genre, artist, recordcompany, albumartwork) VALUES (28, 'Use Your Illusion II', 1991, 'Grunge', 5, 2, 'http://assets.rollingstone.com/assets/images/album_review/79e4a6213bc3668e8208f2b826f5666b7faf9609.jpg');
 INSERT INTO musicstore.albums (albumid, albumname, year, genre, artist, recordcompany, albumartwork) VALUES (29, 'The Spaghetti Incident?', 1993, 'Grunge', 5, 2, 'https://upload.wikimedia.org/wikipedia/en/9/94/Guns_n''_Roses%3B_Spaghetti_Incident%3F_cover.jpg');
 INSERT INTO musicstore.albums (albumid, albumname, year, genre, artist, recordcompany, albumartwork) VALUES (30, 'Surrealistic Pillow', 1967, 'Psychedelic Roc', 15, 14, 'http://images.hhv.de/catalog/new_shop_405x405/00248/248778.jpg');
+INSERT INTO musicstore.review (reviewid, review, album, customer) VALUES (1, 'A generation defining album', 21, 36);
+INSERT INTO musicstore.review (reviewid, review, album, customer) VALUES (2, 'A great album', 22, 36);
+INSERT INTO musicstore.review (reviewid, review, album, customer) VALUES (3, 'A musical masterpiece', 21, 36);
