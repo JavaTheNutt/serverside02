@@ -12,7 +12,7 @@ class Database extends PDO
 		$this->dbserver = 'localhost';
 		$this->database = 'musicstore';
 		$this->username = 'root';
-		$this->password = 'root';
+		$this->password = '!!IamRoot!!';
 		try {
 			parent::__construct("mysql:host=" . $this->dbserver . ";dbname=" . $this->database, $this->username, $this->password);
 			$this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -6,7 +6,8 @@ if(isset($_GET['login'])){
 	$user = json_decode($json, true);
 	$cred = $user['user'];
 	logInUser($cred['uname'], $cred['password'], $dbh);
-	$loggedIn = $_SESSION['adminLoggedIn'];
+	$loggedIn = isset($_SESSION['adminLoggedIn']) ? $_SESSION['adminLoggedIn']: '';
+
 	$response = $loggedIn ? array("loggedIn"=> true): array("loggedIn"=> false);
 }else{
 	$response = array("status"=> "404");
