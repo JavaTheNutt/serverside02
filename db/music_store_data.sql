@@ -63,7 +63,7 @@ CREATE UNIQUE INDEX users_uname_uindex ON users (uname);
 INSERT INTO musicstore.customers (customerid, customername, customerstreet, customertown, customeremail, customerpassword) VALUES (34, 'Jon Snow', 'Castle Black', 'The Wall', 'jsnow@gmail.com', 'aa99d4a5858b78ae4818fa1dc99a23a8d5e530c6');
 INSERT INTO musicstore.customers (customerid, customername, customerstreet, customertown, customeremail, customerpassword) VALUES (35, 'Jamie Lannister', 'Casterly Rock', 'The Westerlands', 'jlannister@gmail.com', '3044a3dc71f644433692a79e1bbe84c1157eb15a');
 INSERT INTO musicstore.customers (customerid, customername, customerstreet, customertown, customeremail, customerpassword) VALUES (36, 'Joe Wemyss', '20 Barrack Street', 'Waterford', 'joewemyss3@gmail.com', '4f573d5ce6a6a41ff43560c5dd66aa9b9dabc1a9');
-INSERT INTO musicstore.users (uname, password) VALUES ('root', 'dc76e9f0c0006e8f919e0c515c66dbba3982f785');
+INSERT INTO musicstore.users (uname, password) VALUES ('root', '5457b43fff6dbed9f27ffc3ec8a6bc332afcc3c1');
 
 INSERT INTO musicstore.recordcompanies (companyid, companyname, companycity, representative, representativeemail, website) VALUES (2, 'Geffen', 'New York', 'James Murphy', 'jmurphy@geffen.com', 'https://www.geffen.com');
 INSERT INTO musicstore.recordcompanies (companyid, companyname, companycity, representative, representativeemail, website) VALUES (3, 'MCD', 'Detroit', 'Paul White', 'pwhite@mcd.org', 'https://www.mcd.org');

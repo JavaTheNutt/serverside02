@@ -8,7 +8,7 @@ sudo rm -rf /var/www/html/*
 echo "old files removed"
 
 echo "preparing to build application"
-n
+
 echo "application built"
 echo "preparing to copy new app to server directory"
 
