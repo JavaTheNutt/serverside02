@@ -1,14 +1,14 @@
 angular.module('myApp').factory('Albums', function ($http) {
 	return{
 		getAllAlbums: function (successCallback) {
-			$http.get('../api/albums/album.php?allalbums').then(function (data) {
+			$http.get('api/albums/album.php?allalbums').then(function (data) {
 				console.log('recived from get albums api');
 				console.log(data.data);
 				successCallback(JSON.parse(JSON.stringify(data.data)))
 			})
 		},
 		getOneAlbum: function (id, successCallback, errorCallback) {
-			$http.get('../api/albums/album.php?onealbum=' + id).then(function (res) {
+			$http.get('api/albums/album.php?onealbum=' + id).then(function (res) {
 				if(res.data.stat){
 					successCallback(JSON.parse(JSON.stringify(res.data.result)));
 				}else{
@@ -18,14 +18,14 @@ angular.module('myApp').factory('Albums', function ($http) {
 			})
 		},
 		getArtistsNames: function (successCallback) {
-			$http.get('../api/albums/album.php?artistsnames').then(function(data){
+			$http.get('api/albums/album.php?artistsnames').then(function(data){
 				console.log('recived from get all artists names api');
 				console.log(data);
 				successCallback(JSON.parse(JSON.stringify(data.data)));
 			})
 		},
 		getCompanyNames: function (successCallback) {
-			$http.get('../api/albums/album.php?companynames').then(function(data){
+			$http.get('api/albums/album.php?companynames').then(function(data){
 				console.log('recived from get all record company names api');
 				successCallback(JSON.parse(JSON.stringify(data.data)));
 			})
@@ -45,7 +45,7 @@ angular.module('myApp').factory('Albums', function ($http) {
 			console.log(albumToBeSent.album_artwork);
 			var req = {
 				method: 'POST',
-				url : '../api/albums/update_album.php?stat=add',
+				url : 'api/albums/update_album.php?stat=add',
 				headers:{
 					'Content-Type': 'application/json'
 				},
@@ -67,7 +67,7 @@ angular.module('myApp').factory('Albums', function ($http) {
 		deleteAlbum: function (id, successCallback, errorCallback) {
 			var req = {
 				method: 'GET',
-				url: '../api/albums/update_album.php?stat=delete&delete=' + id,
+				url: 'api/albums/update_album.php?stat=delete&delete=' + id,
 				headers: {
 					'Content-Type': 'application/json'
 				}
@@ -91,7 +91,7 @@ angular.module('myApp').factory('Albums', function ($http) {
 			};
 			var req = {
 				method: 'POST',
-				url: '../api/albums/update_album.php?stat=edit',
+				url: 'api/albums/update_album.php?stat=edit',
 				headers: {
 					'Content-Type': 'application/json'
 				},

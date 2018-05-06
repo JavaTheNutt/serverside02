@@ -1,6 +1,8 @@
+CREATE SCHEMA IF NOT EXISTS musicstore;
+USE musicstore;
 CREATE TABLE artists
 (
-    artistid INT(11) PRIMARY KEY NOT NULL,
+    artistid INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     artistname VARCHAR(20) NOT NULL,
     city VARCHAR(20),
     website VARCHAR(50)
@@ -9,7 +11,7 @@ CREATE TABLE artists
 CREATE UNIQUE INDEX name ON artists (artistname);
 CREATE TABLE customers
 (
-    customerid INT(11) PRIMARY KEY NOT NULL,
+    customerid INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     customername VARCHAR(50) NOT NULL,
     customerstreet VARCHAR(30),
     customertown VARCHAR(20) NOT NULL,
@@ -18,7 +20,7 @@ CREATE TABLE customers
 );
 CREATE TABLE recordcompanies
 (
-    companyid INT(11) PRIMARY KEY NOT NULL,
+    companyid INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     companyname VARCHAR(20) NOT NULL,
     companycity VARCHAR(20),
     representative VARCHAR(20),
@@ -28,7 +30,7 @@ CREATE TABLE recordcompanies
 CREATE UNIQUE INDEX companyname ON recordcompanies (companyname);
 CREATE TABLE albums
 (
-    albumid INT(11) PRIMARY KEY NOT NULL,
+    albumid INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     albumname VARCHAR(50) NOT NULL,
     year YEAR(4) NOT NULL,
     genre VARCHAR(15) NOT NULL,
@@ -43,7 +45,7 @@ CREATE UNIQUE INDEX name ON albums (albumname);
 CREATE INDEX recordcompany ON albums (recordcompany);
 CREATE TABLE review
 (
-    reviewid INT(11) PRIMARY KEY NOT NULL,
+    reviewid INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     review VARCHAR(1000) NOT NULL,
     album INT(11) NOT NULL,
     customer INT(11) NOT NULL,

@@ -1,12 +1,12 @@
 angular.module('myApp').factory('Artists', function ($http) {
 	return{
 		getAllArtists: function(successCallback){
-			$http.get('../api/artists/artist.php?allartists').then(function (res) {
+			$http.get('api/artists/artist.php?allartists').then(function (res) {
 				successCallback(JSON.parse(JSON.stringify(res.data)));
 			});
 		},
 		getOneArtist: function (id, successCallback) {
-			$http.get('../api/artists/artist.php?artistid=' + id).then(function (res) {
+			$http.get('api/artists/artist.php?artistid=' + id).then(function (res) {
 				console.log('recived single company');
 				successCallback(JSON.parse(JSON.stringify(res.data)));
 			})
@@ -17,7 +17,7 @@ angular.module('myApp').factory('Artists', function ($http) {
 			console.log(art);
 			var req = {
 				method: 'POST',
-				url: '../api/artists/update_artist.php?stat=add',
+				url: 'api/artists/update_artist.php?stat=add',
 				headers: {
 					'Content-Type': 'application/json'
 				},
@@ -31,7 +31,7 @@ angular.module('myApp').factory('Artists', function ($http) {
 			})
 		},
 		deleteArtist: function (id, successCallback) {
-			$http.get('../api/artists/update_artist.php?stat=delete&delete=' + id).then(function (data) {
+			$http.get('api/artists/update_artist.php?stat=delete&delete=' + id).then(function (data) {
 				successCallback(data);
 			})
 			
@@ -41,7 +41,7 @@ angular.module('myApp').factory('Artists', function ($http) {
 			console.log(art);
 			var req = {
 				method: 'POST',
-				url: '../api/artists/update_artist.php?stat=update',
+				url: 'api/artists/update_artist.php?stat=update',
 				header:{
 					'Content-Type': 'application/json'
 				},

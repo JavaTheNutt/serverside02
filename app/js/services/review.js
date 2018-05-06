@@ -1,7 +1,7 @@
 angular.module('myApp').factory('reviews', function ($http) {
 	return{
 		getAlbumName: function (id, successCallback) {
-			$http.get('../api/albums/album.php?onealbum=' + id).then(function (res) {
+			$http.get('api/albums/album.php?onealbum=' + id).then(function (res) {
 				if(res.data.stat){
 					console.log('albumname recived');
 					console.log(res.data.result.albumname);
@@ -12,7 +12,7 @@ angular.module('myApp').factory('reviews', function ($http) {
 		addReview: function (review, successCallback) {
 			var req = {
 				method: 'POST',
-				url: '../api/review/review.php?addreview',
+				url: 'api/review/review.php?addreview',
 				headers:{
 					'Content-Type': 'application/json'
 				},
@@ -28,7 +28,7 @@ angular.module('myApp').factory('reviews', function ($http) {
 			})
 		},
 		getAllReviews: function (successCallback) {
-			$http.get('../api/review/review.php?allreviews').then(function (data) {
+			$http.get('api/review/review.php?allreviews').then(function (data) {
 				successCallback(data.data);
 			})
 		}

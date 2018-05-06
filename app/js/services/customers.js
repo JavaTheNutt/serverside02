@@ -3,7 +3,7 @@ angular.module('myApp')
 	return{
 		getEmails: function (successCallback) {
 			console.log('recived by get emails service');
-			$http.get('../api/customers/customer.php?allUsernames').then(function (res) {
+			$http.get('api/customers/customer.php?allUsernames').then(function (res) {
 				successCallback(res.data);
 			})
 		},
@@ -13,7 +13,7 @@ angular.module('myApp')
 			console.log(cust);
 			var req = {
 				method: 'POST',
-				url: '../api/customers/customer.php?add_cust',
+				url: 'api/customers/customer.php?add_cust',
 				headers: {
 					'Content-Type': 'application/json'
 				},
